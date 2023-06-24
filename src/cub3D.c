@@ -11,6 +11,19 @@
 /* ************************************************************************** */
 #include "../include/cub3d.h"
 
+int	help(int *fd, int *index, char *path_cub, char **str)
+{
+	*index = 0;
+	*str = ft_calloc(1, 1);
+	*fd = open(path_cub, O_RDONLY);
+	if (*fd < 0)
+	{
+		free(*str);
+		return (1);
+	}
+	return (0);
+}
+
 void	ft_init_struct(t_game *data)
 {
 	data->time.old_time = 0;
@@ -26,16 +39,16 @@ char	*ft_init_game(t_game *data, int ac, char **av)
 	if (ac != 2)
 	{
 		ft_error("Error\nWrong number of arguments");
-		exit(0);
+		exit(1);
 	}
 	else if (ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".cub", 4) != 0)
 	{
 		ft_error("Error\nWrong file extension");
-		exit(0);
+		exit(1);
 	}
 	ft_init_struct(data);
 	str = ft_get_map(av[1]);
-	if (str == NULL)
+	if (!str)
 	{
 		free(str);
 		free(data->instr);

@@ -13,7 +13,7 @@ OBJS_DIR	= objs/
 OBJS		= $(SRCS:.c=.o)
 OBJECTS_PREFIXED = $(addprefix $(OBJS_DIR), $(OBJS))
 CC			= cc -g
-CC_FLAGS	= -Wall -Werror -Wextra
+CC_FLAGS	= -Wall -Werror -Wextra -fsanitize=address
 MLB_FLAGS	= libft/libft.a #mlx/libmlx.a -no-pie -lm -lX11 -lXext
 MLX_flags	= -lmlx -framework OpenGL -framework AppKit 
 $(OBJS_DIR)%.o : %.c include/cub3d.h

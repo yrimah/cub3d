@@ -233,5 +233,6 @@ int		ft_close(t_game *init);
 void	ft_print_map(char **map);
 void	ft_free_map(char **map);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int		help(int *fd, int *index, char *path_cub, char **str);
 
 #endif

@@ -22,19 +22,15 @@ char	*ft_strjoinf(char *str, char *buff)
 	return (temporaneo);
 }
 
-char	*ft_get_map(char *path_ber)
+char	*ft_get_map(char *path_cub)
 {
 	int		fd;	
 	char	*str;		
 	char	*buff;
+	int		index;
 
-	str = ft_calloc(1, 1);
-	fd = open(path_ber, O_RDONLY);
-	if (fd < 0)
-	{
-		free(str);
+	if (help(&fd, &index, path_cub, &str))
 		return (NULL);
-	}
 	while (1)
 	{
 		buff = get_next_line(fd);
@@ -44,9 +40,12 @@ char	*ft_get_map(char *path_ber)
 			free(buff);
 			break ;
 		}
+		index = 1;
 		str = ft_strjoinf(str, buff);
 		free(buff);
 	}
+	if (!index)
+		return (NULL);
 	return (str);
 }
 
