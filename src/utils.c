@@ -61,7 +61,6 @@ int	ft_close(t_game *init)
 	ft_free_map(init->instr);
 	mlx_destroy_window(init->mlx, init->win);
 	mlx_destroy_image(init->mlx, init->img.img);
-	// mlx_destroy_display(init->mlx);
 	free(init->mlx);
 	exit(0);
 }
